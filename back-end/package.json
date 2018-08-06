@@ -1,0 +1,27 @@
+{
+  "name": "listapp",
+  "version": "1.0.0",
+  "description": "A simple list application in Angular and Node.js.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/washingtonbr/listApp.git"
+  },
+  "keywords": [
+    "list",
+    "application",
+    "to",
+    "do",
+    "node.js",
+    "angular"
+  ],
+  "author": "Washington Pires <4washingtonbr@gmail.com>",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/washingtonbr/listApp/issues"
+  },
+  "homepage": "https://github.com/washingtonbr/listApp#readme"
+}
