@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/washingtonbr/listApp/issues"
   },
-  "homepage": "https://github.com/washingtonbr/listApp#readme"
+  "homepage": "https://github.com/washingtonbr/listApp",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
