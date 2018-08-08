@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { UserSchema } from '../schemas/UserSchema';
-import { IUserModel } from '../interfaces/userInterface';
+import { IUserModel } from '../interfaces/UserInterface';
 import { Promise } from 'es6-promise';
 
 export class UserModel {
