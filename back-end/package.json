@@ -30,6 +30,8 @@
   "homepage": "https://github.com/washingtonbr/listApp",
   "dependencies": {
     "@types/express": "^4.16.0",
+    "@types/mongoose": "^5.2.4",
+    "es6-promise": "^4.2.4",
     "express": "^4.16.3",
     "mongoose": "^5.2.7"
   }
