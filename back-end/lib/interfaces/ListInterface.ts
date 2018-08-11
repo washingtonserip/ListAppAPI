@@ -20,7 +20,8 @@ export interface IListModel extends IList, mongoose.Document {}
 export interface IListRepository {
   create(payload: IList): Promise<IListModel>;
   find(params: object): Promise<IListModel[]>;
-  findById(params: string|object): Promise<IListModel>;
-  update(params: string|object, body: IList): Promise<IListModel>;
-  delete(params: string|object): Promise<IListModel>;
+  findById(id: string): Promise<IListModel>;
+  findOne(params: object): Promise<IListModel>;
+  update(params: object, body: IList): Promise<IListModel>;
+  delete(params: object): Promise<IListModel>;
 }

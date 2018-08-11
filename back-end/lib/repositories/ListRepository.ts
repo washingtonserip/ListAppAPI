@@ -14,15 +14,19 @@ export class ListRepository extends BaseRepository implements IListRepository {
     return super.find(params);
   }
 
-  public findById (params: string|object) : Promise<IListModel> {
-    return super.findById(params);
+  public findById (id: string) : Promise<IListModel> {
+    return super.findById(id);
   }
 
-  public update (params: string|object, body: IList) : Promise<IListModel> {
+  public findOne (params: object) : Promise<IListModel> {
+    return super.findOne(params);
+  }
+
+  public update (params: object, body: IList) : Promise<IListModel> {
     return super.update(params, body);
   }
 
-  public delete (params: string|object) : Promise<IListModel> {
+  public delete (params: object) : Promise<IListModel> {
     return super.delete(params);
   }
 }
