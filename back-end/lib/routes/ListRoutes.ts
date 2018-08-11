@@ -17,10 +17,10 @@ export class ListRoutes {
     const { create, read, readAll, update, Delete } = this._userController;
     const token = new Token();
     this.router.post('/', token.verify, create);
-    this.router.get('/:listId', token.verify, read);
+    this.router.get('/:_id', token.verify, read);
     this.router.get('/', token.verify, readAll);
-    this.router.put('/:listId', token.verify, update);
-    this.router.delete('/:listId', token.verify, Delete);
+    this.router.put('/:_id', token.verify, update);
+    this.router.delete('/:_id', token.verify, Delete);
     return this.router;
   }
 }

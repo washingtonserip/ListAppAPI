@@ -20,11 +20,9 @@ export class ListController {
 
   public read (request: express.Request, response: express.Response) {
     const _listRepository = new ListRepository();
-    const { listId, _user } = request.params;
+    const { _id, _user } = request.params;
 
-    console.log('_id', listId, '_user', _user);
-
-    _listRepository.findById({ _id: listId, _user })
+    _listRepository.findOne({ _id, _user })
       .then((result) => {
         response.status(200).send(result);
       })
@@ -48,11 +46,11 @@ export class ListController {
 
   public update (request: express.Request, response: express.Response) {
     const { title, text, list } = request.body;
-    const { listId, _user } = request.params;
+    const { _id, _user } = request.params;
     const payload: IList = { _user, title, text, list };
     const _listRepository = new ListRepository();
 
-    _listRepository.update({ _id: listId, _user }, payload)
+    _listRepository.update({ _id, _user }, payload)
       .then((result) => {
         response.status(200).send(result);
       })
@@ -62,10 +60,10 @@ export class ListController {
   }
 
   public Delete (request: express.Request, response: express.Response) {
-    const { listId, _user } = request.params;
+    const { _id, _user } = request.params;
     const _listRepository = new ListRepository();
 
-    _listRepository.delete({ _id: listId, _user })
+    _listRepository.delete({ _id, _user })
       .then((result) => {
         response.status(200).send(result);
       })

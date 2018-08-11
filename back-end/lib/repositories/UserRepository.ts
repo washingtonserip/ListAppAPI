@@ -22,11 +22,11 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     return super.findOne(params);
   }
 
-  public update (id: string, body: IUser) : Promise<IUserModel> {
-    return super.update(id, body);
+  public update (params: object, body: IUser) : Promise<IUserModel> {
+    return super.update(params, body);
   }
 
-  public delete (id: string) : Promise<IUserModel> {
-    return super.delete(id);
+  public delete (params: object) : Promise<IUserModel> {
+    return super.delete(params);
   }
 }
