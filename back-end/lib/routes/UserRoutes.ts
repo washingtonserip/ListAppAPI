@@ -13,7 +13,8 @@ export class UserRoutes {
   }
 
   get routes () {
-    const { create } = this._userController;
+    const { login, create } = this._userController;
+    this.router.post('/login', login);
     this.router.post('/user', create);
     return this.router;
   }
