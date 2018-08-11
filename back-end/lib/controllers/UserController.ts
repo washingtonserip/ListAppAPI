@@ -47,4 +47,17 @@ export class UserController {
       });
   }
 
+  public read (request: express.Request, response: express.Response) {
+    const _userRepository = new UserRepository();
+    const userId: string = request.params.userId;
+
+    _userRepository.findById(userId)
+      .then((result) => {
+        const { _id, name, username } = result;
+        response.status(200).send({ _id, name, username });
+      })
+      .catch((error) => {
+        response.status(500).send(error);
+      });
+  }
 }

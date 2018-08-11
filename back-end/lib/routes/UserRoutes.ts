@@ -1,6 +1,7 @@
 import * as express from 'express';
 import { UserController } from '../controllers/UserController';
 import * as bodyParser from 'body-parser';
+import { Token } from '../helpers/Token';
 
 export class UserRoutes {
   private router = express.Router();
@@ -13,9 +14,11 @@ export class UserRoutes {
   }
 
   get routes () {
-    const { login, create } = this._userController;
+    const { login, create, read } = this._userController;
+    const token = new Token();
     this.router.post('/login', login);
     this.router.post('/user', create);
+    this.router.get('/user', token.verify, read);
     return this.router;
   }
 }
