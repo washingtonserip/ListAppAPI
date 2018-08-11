@@ -8,7 +8,7 @@ const CheckListSchema = new mongoose.Schema({
 CheckListSchema.add({ list: [CheckListSchema] });
 
 const schema: mongoose.Schema = new mongoose.Schema({
-  userId: {
+  _user: {
     type: String,
     required: true
   },

@@ -49,9 +49,9 @@ export class UserController {
 
   public read (request: express.Request, response: express.Response) {
     const _userRepository = new UserRepository();
-    const userId: string = request.params.userId;
+    const _user: string = request.params._user;
 
-    _userRepository.findById(userId)
+    _userRepository.findById(_user)
       .then((result) => {
         const { _id, name, username } = result;
         response.status(200).send({ _id, name, username });
