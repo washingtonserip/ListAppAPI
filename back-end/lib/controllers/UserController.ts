@@ -1,18 +1,20 @@
 import * as express from 'express';
-import { UserModel } from '../model/UserModel';
+import { UserRepository } from '../repositories/UserRepository';
+import { IUser } from '../interfaces/UserInterface';
 
 export class UserController {
-  public create (req: express.Request, res: express.Response) {
-    const { name, email, username, password } = req.body;
-    const _userModel = new UserModel();
+  public create (request: express.Request, response: express.Response) {
+    const { name, email, username, password } = request.body;
+    const payload: IUser = { name, email, username, password };
+    const _userRepository = new UserRepository();
 
-    _userModel.create(name, email, username, password)
-      .then((response) => {
-        console.log('_userModel - then')
-        res.status(200).send(response);
+    _userRepository.create(payload)
+      .then((result) => {
+        response.status(200).send(result);
       })
       .catch((error) => {
-        res.status(200).send(error);
+        response.status(500).send(error);
       });
   }
+
 }
