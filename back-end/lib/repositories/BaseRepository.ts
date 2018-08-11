@@ -12,7 +12,7 @@ export class BaseRepository {
         } else {
           resolve(result);
         }
-      })
+      });
     });
   }
 
@@ -24,7 +24,7 @@ export class BaseRepository {
         } else {
           resolve(result);
         }
-      })
+      });
     });
   }
 
@@ -36,7 +36,19 @@ export class BaseRepository {
         } else {
           resolve(result);
         }
-      })
+      });
+    });
+  }
+
+  public findOne (params: object) : any {
+    return new Promise((resolve, reject) => {
+      this.schema.findOne(params, (error, result) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      });
     });
   }
 
@@ -48,7 +60,7 @@ export class BaseRepository {
         } else {
           resolve(result);
         }
-      })
+      });
     });
   }
 
@@ -60,7 +72,7 @@ export class BaseRepository {
         } else {
           resolve(result);
         }
-      })
+      });
     });
   }
 }
