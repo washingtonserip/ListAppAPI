@@ -34,7 +34,8 @@ export class UserController {
 
   public create (request: express.Request, response: express.Response) {
     const { name, email, username, password } = request.body;
-    const payload: IUser = { name, email, username, password };
+    const hashedPassword = bcrypt.hashSync(password, 8);
+    const payload: IUser = { name, email, username, password: hashedPassword };
     const _userRepository = new UserRepository();
 
     _userRepository.create(payload)
