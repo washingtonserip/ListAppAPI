@@ -1,19 +1,22 @@
-import jwt from 'jsonwebtoken';
+import * as express from 'express';
+import * as jwt from 'jsonwebtoken';
 import Config from '../Config';
 
-export function verifyToken(req, res, next) {
-  const token = req.headers['x-access-token'];
+export class Token {
+  public verify (request: express.Request, response: express.Response, next: express.NextFunction) {
+    const token = request.get('x-access-token');
 
-  if (!token) {
-    return res.status(403).send({ auth: false, message: 'No token provided.' });
-  }
-
-  jwt.verify(token, Config.secret, function(err, decoded) {
-    if (err) {
-      return res.status(401).send({ auth: false, message: 'Failed to authenticate token.' });
+    if (!token) {
+      return response.status(403).send({ auth: false, message: 'No token provided.' });
     }
 
-    req.userId = decoded.id;
-    next();
-  });
+    jwt.verify(token, Config.secret, function(err, decoded) {
+      if (err) {
+        return response.status(401).send({ auth: false, message: 'Failed to authenticate token.' });
+      }
+
+      request.params.userId = decoded.id;
+      next();
+    });
+  }
 }
