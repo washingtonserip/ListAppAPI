@@ -16,6 +16,7 @@ export interface IUserRepository {
   create(IUser): Promise<IUserModel>;
   find(params?: object): Promise<IUserModel[]>;
   findById(id: string): Promise<IUserModel>;
+  findOne(params: object): Promise<IUserModel>;
   update(string, IUser): Promise<IUserModel>;
   delete(id: string): Promise<IUserModel>;
 }

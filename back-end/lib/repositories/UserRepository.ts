@@ -18,6 +18,10 @@ export class UserRepository extends BaseRepository implements IUserRepository {
     return super.findById(id);
   }
 
+  public findOne (params: object) : Promise<IUserModel> {
+    return super.findOne(params);
+  }
+
   public update (id: string, body: IUser) : Promise<IUserModel> {
     return super.update(id, body);
   }
