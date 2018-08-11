@@ -10,15 +10,15 @@ export class UserRoutes {
   constructor () {
     this._userController = new UserController();
     this.router.use(bodyParser.urlencoded({ extended: true }));
-    this.router.use(bodyParser.json())
+    this.router.use(bodyParser.json());
   }
 
   get routes () {
     const { login, create, read } = this._userController;
     const token = new Token();
     this.router.post('/login', login);
-    this.router.post('/user', create);
-    this.router.get('/user', token.verify, read);
+    this.router.post('/', create);
+    this.router.get('/', token.verify, read);
     return this.router;
   }
 }
