@@ -28,9 +28,9 @@ export class BaseRepository {
     });
   }
 
-  public findById (id: string) : any {
+  public findById (params: string|object) : any {
     return new Promise((resolve, reject) => {
-      this.schema.findById(id, (error, result) => {
+      this.schema.findById(params, (error, result) => {
         if (error) {
           reject(error);
         } else {
@@ -52,9 +52,9 @@ export class BaseRepository {
     });
   }
 
-  public update (id: string, body: object) : any {
+  public update (params: string|object, body: object) : any {
     return new Promise((resolve, reject) => {
-      this.schema.findByIdAndUpdate(id, body, { new: true }, (error, result) => {
+      this.schema.findByIdAndUpdate(params, body, { new: true }, (error, result) => {
         if (error) {
           reject(error);
         } else {
@@ -64,9 +64,9 @@ export class BaseRepository {
     });
   }
 
-  public delete (id: string) : any {
+  public delete (params: string|object) : any {
     return new Promise((resolve, reject) => {
-      this.schema.findByIdAndRemove(id, (error, result) => {
+      this.schema.findByIdAndRemove(params, (error, result) => {
         if (error) {
           reject(error);
         } else {

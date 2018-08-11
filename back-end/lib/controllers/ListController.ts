@@ -4,8 +4,9 @@ import { IList } from '../interfaces/ListInterface';
 
 export class ListController {
   public create (request: express.Request, response: express.Response) {
-    const { userId, title, text, list } = request.body;
-    const payload: IList = { userId, title, text, list };
+    const { title, text, list } = request.body;
+    const { _user } = request.params;
+    const payload: IList = { _user, title, text, list };
     const _listRepository = new ListRepository();
 
     _listRepository.create(payload)
@@ -19,9 +20,11 @@ export class ListController {
 
   public read (request: express.Request, response: express.Response) {
     const _listRepository = new ListRepository();
-    const listId: string = request.params.listId;
+    const { listId, _user } = request.params;
 
-    _listRepository.findById(listId)
+    console.log('_id', listId, '_user', _user);
+
+    _listRepository.findById({ _id: listId, _user })
       .then((result) => {
         response.status(200).send(result);
       })
@@ -32,8 +35,9 @@ export class ListController {
 
   public readAll (request: express.Request, response: express.Response) {
     const _listRepository = new ListRepository();
+    const { _user } = request.params;
 
-    _listRepository.find()
+    _listRepository.find({ _user })
       .then((result) => {
         response.status(200).send(result);
       })
@@ -43,12 +47,12 @@ export class ListController {
   }
 
   public update (request: express.Request, response: express.Response) {
-    const { userId, title, text, list } = request.body;
-    const payload: IList = { userId, title, text, list };
-    const { listId } = request.params;
+    const { title, text, list } = request.body;
+    const { listId, _user } = request.params;
+    const payload: IList = { _user, title, text, list };
     const _listRepository = new ListRepository();
 
-    _listRepository.update(listId, payload)
+    _listRepository.update({ _id: listId, _user }, payload)
       .then((result) => {
         response.status(200).send(result);
       })
@@ -58,10 +62,10 @@ export class ListController {
   }
 
   public Delete (request: express.Request, response: express.Response) {
-    const { listId } = request.params;
+    const { listId, _user } = request.params;
     const _listRepository = new ListRepository();
 
-    _listRepository.delete(listId)
+    _listRepository.delete({ _id: listId, _user })
       .then((result) => {
         response.status(200).send(result);
       })

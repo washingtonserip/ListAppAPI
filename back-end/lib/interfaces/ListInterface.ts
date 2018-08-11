@@ -7,7 +7,7 @@ export interface ICheckList {
 }
 
 export interface IList {
-  userId: string;
+  _user: string;
   title: string;
   text: string;
   list?: ICheckList[];
@@ -19,8 +19,8 @@ export interface IListModel extends IList, mongoose.Document {}
 
 export interface IListRepository {
   create(payload: IList): Promise<IListModel>;
-  find(params?: object): Promise<IListModel[]>;
-  findById(id: string): Promise<IListModel>;
-  update(id: string, body: IList): Promise<IListModel>;
-  delete(id: string): Promise<IListModel>;
+  find(params: object): Promise<IListModel[]>;
+  findById(params: string|object): Promise<IListModel>;
+  update(params: string|object, body: IList): Promise<IListModel>;
+  delete(params: string|object): Promise<IListModel>;
 }

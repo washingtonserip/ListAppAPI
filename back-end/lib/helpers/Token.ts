@@ -15,7 +15,7 @@ export class Token {
         return response.status(401).send({ auth: false, message: 'Failed to authenticate token.' });
       }
 
-      request.params.userId = decoded.id;
+      request.params._user = decoded.id;
       next();
     });
   }
