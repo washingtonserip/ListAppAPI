@@ -4,7 +4,7 @@
   "description": "A simple list application in Angular and Node.js.",
   "main": "Server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "typescript",
     "dev": "ts-node ./lib/Server.ts",
     "watch:dev": "nodemon -e ts -w ./lib -x npm run dev",
     "start": "node ./dist/Server.js",
@@ -39,5 +39,9 @@
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.2.7",
     "nodemon": "^1.18.3"
+  },
+  "devDependencies": {
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.1"
   }
 }
