@@ -21,7 +21,7 @@ export class UserController {
           return response.status(401).send({ auth: false, token: null });
         }
 
-        const token = jwt.sign({ id: result._id }, Config.secret, {
+        const token = jwt.sign({ id: result._id }, Config.privateKey, {
           expiresIn: 86400
         });
 
