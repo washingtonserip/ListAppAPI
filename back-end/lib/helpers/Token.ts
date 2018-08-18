@@ -10,7 +10,7 @@ export class Token {
       return response.status(403).send({ auth: false, message: 'No token provided.' });
     }
 
-    jwt.verify(token, Config.secret, function(err, decoded) {
+    jwt.verify(token, Config.privateKey, function(err, decoded) {
       if (err) {
         return response.status(401).send({ auth: false, message: 'Failed to authenticate token.' });
       }

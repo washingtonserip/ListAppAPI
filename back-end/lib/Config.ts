@@ -1,3 +1,3 @@
 export default {
-  secret: process.env.SECRET
+  privateKey: process.env.PRIVATE_KEY
 }
