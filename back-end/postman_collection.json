@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "814c18b5-cf72-4614-8763-4a5e73b0abd4",
+		"name": "ListApp.me",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "e9287076-747e-42ea-a3a0-a1e997027fba",
+			"name": "Create user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"user\",\n\t\"username\": \"user\",\n\t\"email\": \"user@listapp.me\",\n\t\"password\": \"user\"\n}\n"
+				},
+				"url": {
+					"raw": "{{url}}/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "9103b331-763f-470e-be78-79d968a93614",
+			"name": "User login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7f032299-416d-411c-964b-4fe7f4f39339",
+						"type": "text/javascript",
+						"exec": [
+							"var data = pm.response.json();",
+							"pm.environment.set(\"token\", data.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"user@listapp.me\",\n    \"password\": \"user\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "dd28f5c9-955a-4c9d-9791-8b78bc6dae1b",
+			"name": "Create list for the user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e4262538-edae-47b3-a48a-d0429b3708fd",
+						"type": "text/javascript",
+						"exec": [
+							"var data = pm.response.json();",
+							"pm.environment.set(\"first-task\", data._id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Hello world\",\n    \"text\": \"First list of the user.\",\n    \"list\": [\n        {\n            \"text\": \"App test\",\n            \"isCheck\": true\n        },\n        {\n            \"text\": \"Create list\",\n            \"isCheck\": true\n        },\n        {\n            \"text\": \"Edit this list\",\n            \"isCheck\": false\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "bd354627-d37b-41ae-ad02-8372e88d3ea9",
+			"name": "Get list by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/list/{{first-task}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"list",
+						"{{first-task}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "2a20e598-4552-4ff1-ab84-d6e9a62ea44d",
+			"name": "Edit list by id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Hello world\",\n    \"text\": \"First list of the user.\",\n    \"list\": [\n        {\n            \"text\": \"App test\",\n            \"isCheck\": true\n        },\n        {\n            \"text\": \"Create list\",\n            \"isCheck\": true\n        },\n        {\n            \"text\": \"Edit this list\",\n            \"isCheck\": true\n        },\n        {\n            \"text\": \"Share this\",\n            \"isCheck\": false\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/list/{{first-task}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"list",
+						"{{first-task}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "c2d33f87-4df3-49a1-b48b-fea045e83522",
+			"name": "Get lists by user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/list",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "c4dfc9c0-97ad-4a5b-adca-a28b6d50ba59",
+			"name": "Delete list by id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{url}}/list/{{first-task}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"list",
+						"{{first-task}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
