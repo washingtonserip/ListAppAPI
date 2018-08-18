@@ -1,11 +1,11 @@
 import * as express from 'express';
-import DataBase from './DataBase';
+import Database from './Database';
 import { UserRoutes } from './routes/UserRoutes';
 import { ListRoutes } from './routes/ListRoutes';
 
 class App {
   public app: express.Application;
-  public db = new DataBase();
+  public db = new Database();
 
   constructor() {
     this.app = express();
