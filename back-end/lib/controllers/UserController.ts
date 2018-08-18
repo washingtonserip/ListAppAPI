@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as bcrypt from 'bcrypt';
+import * as bcryptjs from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import Config from '../Config';
 import { UserRepository } from '../repositories/UserRepository';
@@ -16,12 +16,12 @@ export class UserController {
           return response.status(404).send('No user found.');
         }
 
-        const passwordIsValid = password ? bcrypt.compareSync(password, result.password) : false;
+        const passwordIsValid = password ? bcryptjs.compareSync(password, result.password) : false;
         if (!passwordIsValid) {
           return response.status(401).send({ auth: false, token: null });
         }
 
-        const token = jwt.sign({ id: result._id }, Config.privateKey, {
+        const token = jwt.sign({ id: result._id }, Config.secretKey, {
           expiresIn: 86400
         });
 
@@ -34,7 +34,7 @@ export class UserController {
 
   public create (request: express.Request, response: express.Response) {
     const { name, email, username, password } = request.body;
-    const hashedPassword = bcrypt.hashSync(password, 8);
+    const hashedPassword = bcryptjs.hashSync(password, 8);
     const payload: IUser = { name, email, username, password: hashedPassword };
     const _userRepository = new UserRepository();
 
