@@ -29,6 +29,8 @@ $ sudo docker run --env-file ./environments/.env.production -d -p 3000:3000 list
 ```
 
 ## Testing with Postman
-Import "postman_collection.json" and "postman_environment.json" files of "postman" folder on your Postman.
+Import the `postman_collection.json` and `postman_environment.json` files of `postman` folder on your Postman.
 
 ![Postman](postman/collection_runner.png)
+
+For details, see the [collections](https://www.getpostman.com/docs/v6/postman/collections/intro_to_collections) and [environments](https://www.getpostman.com/docs/v6/postman/environments_and_globals/intro_to_environments_and_globals) documentation.
