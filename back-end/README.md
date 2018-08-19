@@ -27,3 +27,8 @@ $ sudo docker build -t list-app .
 # Running container
 $ sudo docker run --env-file ./environments/.env.production -d -p 3000:3000 list-app
 ```
+
+## Testing with Postman
+Import "postman_collection.json" and "postman_environment.json" files of "postman" folder on your Postman.
+
+![Postman](postman/collection_runner.png)
