@@ -1,0 +1,67 @@
+<section class="hero is-info is-fullheight">
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a (click)="goHome()" class="navbar-item">
+            <img src="../../../assets/images/logo-white.png" alt="Logo">
+          </a>
+        </div>
+        <div id="navbarMenuHeroC" class="navbar-menu">
+          <div class="navbar-end">
+            <span class="navbar-item">
+              <a (click)="goHome()" class="button is-info is-inverted">
+                <span class="icon">
+                  <fa-icon [icon]="faHome"></fa-icon>
+                </span>
+                <span>Back</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+          <div class="box">
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control">
+                <input class="input" type="email" placeholder="Your email">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Password</label>
+              <div class="control">
+                <input class="input" type="password" placeholder="Your password">
+              </div>
+            </div>
+
+            <div class="buttons">
+              <button class="button is-info">
+                <span class="icon is-small">
+                  <fa-icon [icon]="faUserPlus"></fa-icon>
+                </span>
+                <span>Sign Up</span>
+              </button>
+
+              <div class="label-or">or</div>
+
+              <button class="button">
+                <span class="icon is-small">
+                  <fa-icon [icon]="faSignInAlt"></fa-icon>
+                </span>
+                <span>Sign In</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

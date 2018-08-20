@@ -6,6 +6,7 @@ import { ComponentsModule } from './components/components.module';
 
 import { HomeModule } from './pages/home/home.module';
 import { AppComponent } from './app.component';
+import { AuthModule } from './pages/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     ComponentsModule,
     HomeModule,
+    AuthModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
   providers: [],
