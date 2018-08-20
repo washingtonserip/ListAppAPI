@@ -1,8 +1,14 @@
 import { Component } from '@angular/core';
+import { faHome, faSignInAlt, faUserPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'component-home',
+  selector: 'page-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent { }
+export class HomeComponent {
+  faHome = faHome;
+  faSignInAlt = faSignInAlt;
+  faUserPlus = faUserPlus;
+  faCheck = faCheck;
+}

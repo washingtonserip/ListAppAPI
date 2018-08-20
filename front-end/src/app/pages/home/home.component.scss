@@ -1,0 +1,31 @@
+.navbar {
+  padding-top: 10px;
+}
+
+.hero {
+  background: url('../../../assets/images/bg.jpg') repeat center;
+}
+
+.hero-body {
+  padding-top: 1rem;
+
+  .logo {
+    max-width: 180px;
+    margin-bottom: 15px;
+  }
+
+  h1, h2 {
+    color: #ffffff;
+  }
+
+  .title {
+    padding: 0 15px 15px;
+
+    @media screen and (max-width: 768px) {
+      span {
+        display: block;
+        line-height: 40px;
+      }
+    }
+  }
+}
