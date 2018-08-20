@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { faHome, faSignInAlt, faUserPlus, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { faSignInAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,14 @@ import { faHome, faSignInAlt, faUserPlus, faCheck } from '@fortawesome/free-soli
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  faHome = faHome;
   faSignInAlt = faSignInAlt;
-  faUserPlus = faUserPlus;
   faCheck = faCheck;
+
+  constructor (
+    private router: Router
+  ) {}
+
+  goAuth () {
+    this.router.navigate(['/auth']);
+  }
 }

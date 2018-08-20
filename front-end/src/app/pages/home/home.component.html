@@ -10,7 +10,7 @@
         <div id="navbarMenuHeroC" class="navbar-menu">
           <div class="navbar-end">
             <span class="navbar-item">
-              <a class="button is-info is-inverted">
+              <a (click)="goAuth()" class="button is-info is-inverted">
                 <span class="icon">
                   <fa-icon [icon]="faSignInAlt"></fa-icon>
                 </span>
@@ -35,7 +35,7 @@
       </h2>
 
       <div class="is-hidden-tablet">
-        <a class="button is-info is-inverted">
+        <a (click)="goAuth()" class="button is-info is-inverted">
           <span class="icon">
             <fa-icon [icon]="faSignInAlt"></fa-icon>
           </span>
