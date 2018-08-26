@@ -5,8 +5,9 @@ import { appRoutes } from './configs/routes';
 import { ComponentsModule } from './components/components.module';
 
 import { HomeModule } from './pages/home/home.module';
-import { AppComponent } from './app.component';
 import { AuthModule } from './pages/auth/auth.module';
+import { PanelModule } from './pages/panel/panel.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthModule } from './pages/auth/auth.module';
     ComponentsModule,
     HomeModule,
     AuthModule,
+    PanelModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
   providers: [],

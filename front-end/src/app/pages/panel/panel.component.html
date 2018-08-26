@@ -1,0 +1,53 @@
+<component-page-wrapper
+  [menu]="menu">
+  <h1 class="title has-text-centered">Your lists</h1>
+
+  <div class="columns is-multiline">
+    <div *ngFor="let number of [0,1,2,3,4]" class="column is-4">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            Lorem ipsum dolor
+          </p>
+          <a class="card-header-icon" aria-label="more options">
+            <span class="icon">
+              <fa-icon [icon]="faClock"></fa-icon>
+            </span>
+          </a>
+        </header>
+
+        <div class="card-content">
+          <div class="content">
+            <p>Curabitur sed nibh at ipsum viverra luctus. Aliquam commodo purus id interdum.</p>
+
+            <div class="field">
+              <input class="is-checkradio is-info" id="exampleCheckboxInfo" type="checkbox" name="exampleCheckboxInfo1">
+              <label for="exampleCheckboxInfo1">Sed accumsan magna</label>
+            </div>
+
+            <div class="field">
+              <input class="is-checkradio is-info" id="exampleCheckboxInfo" type="checkbox" name="exampleCheckboxInfo2">
+              <label for="exampleCheckboxInfo2">Proin id dolor ornare</label>
+            </div>
+
+            <div class="field">
+              <input class="is-checkradio is-info" id="exampleCheckboxInfo" type="checkbox" name="exampleCheckboxInfo3">
+              <label for="exampleCheckboxInfo3">Aliquam commodo</label>
+            </div>
+
+            <div class="field">
+              <input class="is-checkradio is-info" id="exampleCheckboxInfo" type="checkbox" name="exampleCheckboxInfo" checked="checked">
+              <label for="exampleCheckboxInfo">Etiam eudui interdum</label>
+            </div>
+
+            <p>...</p>
+          </div>
+        </div>
+        <footer class="card-footer">
+          <a class="card-footer-item">View more</a>
+          <a class="card-footer-item">Edit</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+</component-page-wrapper>
