@@ -13,8 +13,13 @@ export class UserService {
     private httpClient: HttpClient
   ) { }
 
-  createUser (user: IUser) {
+  create (user: IUser) {
     const urlRequest = `${this.serverUrl}/user`;
+    return this.httpClient.post<IUser>(urlRequest, user);
+  }
+
+  login (user: IUser) {
+    const urlRequest = `${this.serverUrl}/user/login`;
     return this.httpClient.post<IUser>(urlRequest, user);
   }
 }

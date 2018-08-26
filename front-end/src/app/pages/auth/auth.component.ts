@@ -75,10 +75,18 @@ export class AuthComponent {
     }
   }
 
-  createAccount (user) {
-    this.userService.createUser(user)
+  signUp (user) {
+    this.userService.create(user)
       .subscribe(
         response => { this.success = 'Account created successfully. Please login.'; },
+        error => { this.error = 'An error has occurred. Try again.'; }
+      );
+  }
+
+  signIn (user) {
+    this.userService.login(user)
+      .subscribe(
+        response => { this.router.navigate(['/panel']); },
         error => { this.error = 'An error has occurred. Try again.'; }
       );
   }
