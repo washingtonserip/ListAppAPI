@@ -1,0 +1,20 @@
+.card-footer input,
+.card-footer .button {
+  border-radius: 0;
+}
+
+.tag {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  cursor: pointer;
+}
+
+.input-edit {
+  border: 0;
+  background-color: transparent;
+  width: 92%;
+}
+
+textarea.input-edit {
+  width: 100%;
+}

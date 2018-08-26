@@ -8,6 +8,7 @@ import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { PanelModule } from './pages/panel/panel.module';
 import { AppComponent } from './app.component';
+import { ListModule } from './pages/list/list.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     HomeModule,
     AuthModule,
     PanelModule,
+    ListModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
   providers: [],
