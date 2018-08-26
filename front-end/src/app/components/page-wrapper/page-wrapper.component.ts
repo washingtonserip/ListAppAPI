@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { faListOl, faPen } from '@fortawesome/free-solid-svg-icons';
 import { Menu } from '../../interfaces/menu.interface';
 
 @Component({
@@ -10,6 +9,4 @@ import { Menu } from '../../interfaces/menu.interface';
 export class PageWrapperComponent {
   @Input() menu: Menu[];
   @Input() headerOnMobile: boolean = true;
-  faListOl = faListOl;
-  faPen = faPen;
 }
