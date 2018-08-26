@@ -1,0 +1,40 @@
+<section class="hero is-info is-fullheight">
+  <div class="hero-head" [ngClass]="{'is-hidden-mobile': !headerOnMobile}">
+    <header class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item is-active">
+            <img src="../../../assets/images/logo-white.png" alt="ListApp.me">
+          </a>
+
+          <span class="navbar-burger burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <span *ngFor="let menuItem of menu" class="navbar-item">
+              <a (click)="menuItem.onClick()"
+                class="button is-info"
+                [ngClass]="{'is-active': menuItem.isActive, 'is-inverted': menuItem.isInverted}">
+                <span class="icon">
+                  <fa-icon [icon]="menuItem.icon"></fa-icon>
+                </span>
+                <span>{{menuItem.text}}</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="hero-body">
+    <div class="container">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</section>
