@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { faHome, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { Menu } from '../../interfaces/menu.interface';
 
 @Component({
   selector: 'component-auth',
@@ -8,15 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent {
-  faHome = faHome;
+  menu: Menu[] = [
+    {
+      text: 'Back',
+      icon: faHome,
+      onClick: () => this.router.navigate(['/']),
+      isInverted: true
+    }
+  ];
   faSignInAlt = faSignInAlt;
   faUserPlus = faUserPlus;
 
   constructor (
     private router: Router
   ) {}
-
-  goHome () {
-    this.router.navigate(['/']);
-  }
 }
