@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { faSignInAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Menu } from '../../interfaces/menu.interface';
 
 @Component({
   selector: 'page-home',
@@ -8,14 +9,17 @@ import { faSignInAlt, faCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  faSignInAlt = faSignInAlt;
+  menu: Menu[] = [
+    {
+      text: 'Sign in or Sign up',
+      icon: faSignInAlt,
+      onClick: () => this.router.navigate(['/auth']),
+      isInverted: true
+    }
+  ];
   faCheck = faCheck;
 
   constructor (
     private router: Router
   ) {}
-
-  goAuth () {
-    this.router.navigate(['/auth']);
-  }
 }

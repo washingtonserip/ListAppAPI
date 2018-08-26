@@ -1,47 +1,23 @@
-<section class="hero is-info is-fullheight">
-  <div class="hero-head is-hidden-mobile">
-    <header class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            <img src="../../../assets/images/logo-white.png" alt="Logo">
-          </a>
-        </div>
-        <div id="navbarMenuHeroC" class="navbar-menu">
-          <div class="navbar-end">
-            <span class="navbar-item">
-              <a (click)="goAuth()" class="button is-info is-inverted">
-                <span class="icon">
-                  <fa-icon [icon]="faSignInAlt"></fa-icon>
-                </span>
-                <span>Sign in or Sign up</span>
-              </a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </header>
-  </div>
+<component-page-wrapper
+  [menu]="menu"
+  [headerOnMobile]="false">
+  <div class="has-text-centered">
+    <img class="logo is-hidden-tablet" src="../../../assets/images/logo-white.png" alt="Logo">
+    <h1 class="title is-size-1-desktop">
+      <span>Your tasks.</span> Your lists.
+    </h1>
+    <h2 class="subtitle is-size-4-desktop">
+      <fa-icon [icon]="faCheck" class="is-size-7"></fa-icon>
+      Try a simple way to organize your day.
+    </h2>
 
-  <div class="hero-body">
-    <div class="container has-text-centered">
-      <img class="logo is-hidden-tablet" src="../../../assets/images/logo-white.png" alt="Logo">
-      <h1 class="title is-size-1-desktop">
-        <span>Your tasks.</span> Your lists.
-      </h1>
-      <h2 class="subtitle is-size-4-desktop">
-        <fa-icon [icon]="faCheck" class="is-size-7"></fa-icon>
-        Try a simple way to organize your day.
-      </h2>
-
-      <div class="is-hidden-tablet">
-        <a (click)="goAuth()" class="button is-info is-inverted">
-          <span class="icon">
-            <fa-icon [icon]="faSignInAlt"></fa-icon>
-          </span>
-          <span>Sign in or Sign up</span>
-        </a>
-      </div>
+    <div class="is-hidden-tablet">
+      <a (click)="goAuth()" class="button is-info is-inverted">
+        <span class="icon">
+          <fa-icon [icon]="faSignInAlt"></fa-icon>
+        </span>
+        <span>Sign in or Sign up</span>
+      </a>
     </div>
   </div>
-</section>
+</component-page-wrapper>
