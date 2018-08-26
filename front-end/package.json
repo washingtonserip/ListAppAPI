@@ -24,6 +24,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "bulma": "^0.7.1",
+    "bulma-checkradio": "^2.1.0",
+    "bulma-extensions": "^2.2.1",
     "core-js": "^2.5.4",
     "node-sass": "^4.9.3",
     "rxjs": "^6.0.0",
