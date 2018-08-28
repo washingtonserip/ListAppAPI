@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { faHome, faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { Menu } from '../../interfaces/menu.interface';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'component-auth',
@@ -76,17 +76,21 @@ export class AuthComponent {
   }
 
   signUp (user) {
+    console.log('signUp', user)
     this.userService.create(user)
       .subscribe(
         response => { this.success = 'Account created successfully. Please login.'; },
-        error => { this.error = 'An error has occurred. Try again.'; }
+        error => { console.log('error', error); this.error = 'An error has occurred. Try again.'; }
       );
   }
 
   signIn (user) {
     this.userService.login(user)
       .subscribe(
-        response => { this.router.navigate(['/panel']); },
+        response => {
+          localStorage.setItem('token', response.token);
+          this.router.navigate(['/panel']);
+        },
         error => { this.error = 'An error has occurred. Try again.'; }
       );
   }

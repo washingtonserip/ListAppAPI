@@ -20,6 +20,6 @@ export class UserService {
 
   login (user: IUser) {
     const urlRequest = `${this.serverUrl}/user/login`;
-    return this.httpClient.post<IUser>(urlRequest, user);
+    return this.httpClient.post<{ auth: boolean, token: string }>(urlRequest, user);
   }
 }

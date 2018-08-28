@@ -7,8 +7,9 @@ import { ComponentsModule } from './components/components.module';
 import { HomeModule } from './pages/home/home.module';
 import { AuthModule } from './pages/auth/auth.module';
 import { PanelModule } from './pages/panel/panel.module';
-import { AppComponent } from './app.component';
 import { ListModule } from './pages/list/list.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,14 @@ import { ListModule } from './pages/list/list.module';
     AuthModule,
     PanelModule,
     ListModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true })
+    RouterModule.forRoot(appRoutes, { enableTracing: true }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        }
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
