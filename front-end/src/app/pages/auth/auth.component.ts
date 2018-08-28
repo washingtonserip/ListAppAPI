@@ -76,11 +76,10 @@ export class AuthComponent {
   }
 
   signUp (user) {
-    console.log('signUp', user)
     this.userService.create(user)
       .subscribe(
         response => { this.success = 'Account created successfully. Please login.'; },
-        error => { console.log('error', error); this.error = 'An error has occurred. Try again.'; }
+        error => { this.error = 'An error has occurred. Try again.'; }
       );
   }
 
