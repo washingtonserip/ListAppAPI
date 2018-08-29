@@ -2,12 +2,17 @@
   [menu]="menu">
   <h1 class="title has-text-centered">Your lists</h1>
 
+  <div *ngIf="error" class="notification is-danger">
+    <button (click)="error = ''" class="delete"></button>
+    {{error}}
+  </div>
+
   <div class="columns is-multiline">
-    <div *ngFor="let number of [0,1,2,3,4]" class="column is-4">
+    <div *ngFor="let item of lists" class="column is-4">
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-            Lorem ipsum dolor
+            {{item.title}}
           </p>
           <a class="card-header-icon" aria-label="more options">
             <span class="icon">
@@ -18,26 +23,16 @@
 
         <div class="card-content">
           <div class="content">
-            <p>Curabitur sed nibh at ipsum viverra luctus. Aliquam commodo purus id interdum.</p>
+            <p *ngIf="item.text">{{item.text}}</p>
 
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox">
-              <label>Sed accumsan magna</label>
-            </div>
-
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox">
-              <label>Proin id dolor ornare</label>
-            </div>
-
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox">
-              <label>Aliquam commodo</label>
-            </div>
-
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox" checked="checked">
-              <label>Etiam eudui interdum</label>
+            <div *ngIf="item.list.length">
+              <div *ngFor="let subItem of item.list" class="field">
+                <input
+                  [checked]="subItem.isCheck"
+                  class="is-checkradio is-info"type="checkbox"
+                />
+                <label>{{subItem.text}}</label>
+              </div>
             </div>
           </div>
         </div>

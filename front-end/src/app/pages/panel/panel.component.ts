@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faListOl, faPen, faClock, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Menu } from '../../interfaces/menu.interface';
+import { ListService } from '../../services/list/list.service';
+import { IList } from '../../interfaces/list.interface';
 
 @Component({
   selector: 'component-panel',
@@ -12,22 +15,35 @@ export class PanelComponent implements OnInit {
     {
       text: 'My lists',
       icon: faListOl,
-      onClick: () => {}
+      onClick: () => this.router.navigate(['/panel']),
     },
     {
       text: 'New list',
       icon: faPen,
-      onClick: () => {},
+      onClick: () => this.router.navigate(['/list']),
       isInverted: true
     }
   ];
-  faListOl = faListOl;
-  faClock = faClock;
-  faCheck = faCheck;
+  public lists: IList[];
+  public error;
+  public faListOl = faListOl;
+  public faClock = faClock;
+  public faCheck = faCheck;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private listService: ListService
+  ) { }
 
   ngOnInit() {
+    this.getLists();
   }
 
+  getLists () {
+    this.listService.getAll()
+      .subscribe(
+        response => { this.lists = response; },
+        error => { this.error = 'An error has occurred. Try again.'; }
+      );
+  }
 }
