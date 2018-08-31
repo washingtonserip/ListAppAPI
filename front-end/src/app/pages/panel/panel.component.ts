@@ -20,7 +20,7 @@ export class PanelComponent implements OnInit {
     {
       text: 'New list',
       icon: faPen,
-      onClick: () => this.router.navigate(['/list']),
+      onClick: () => this.router.navigate(['/new-list']),
       isInverted: true
     }
   ];

@@ -24,5 +24,10 @@ export const appRoutes: Routes = [
     path: 'list',
     component: ListComponent,
     canActivate: [AuthGuardService]
+  },
+  {
+    path: 'new-list',
+    component: ListComponent,
+    canActivate: [AuthGuardService]
   }
 ];

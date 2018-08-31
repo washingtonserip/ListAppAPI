@@ -17,4 +17,9 @@ export class ListService {
     const urlRequest = `${this.serverUrl}/list`;
     return this.httpClient.get<IList[]>(urlRequest);
   }
+
+  create (theList: IList) {
+    const urlRequest = `${this.serverUrl}/list`;
+    return this.httpClient.post<IList>(urlRequest, theList);
+  }
 }

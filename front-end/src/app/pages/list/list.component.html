@@ -4,51 +4,78 @@
 
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
+      <div *ngFor="let erroItem of error; let i = index" class="notification is-danger">
+        <button (click)="error.splice(i, 1)" class="delete"></button>
+        {{erroItem}}
+      </div>
+
+      <div *ngIf="success" class="notification is-primary">
+        <button (click)="success = ''" class="delete"></button>
+        {{success}}
+      </div>
+
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-            <input class="input-edit" type="text" value="Lorem ipsum dolor">
+            <input
+              [(ngModel)]="theList.title"
+              placeholder="Enter a title"
+              class="input-edit"
+              type="text"
+            />
           </p>
         </header>
 
         <div class="card-content">
           <div class="content">
             <p>
-              <textarea class="input-edit">Curabitur sed nibh at ipsum viverra luctus. Aliquam commodo purus id interdum.</textarea>
+              <textarea
+                [(ngModel)]="theList.text"
+                placeholder="Enter a description"
+                class="input-edit">
+              </textarea>
             </p>
 
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox">
-              <label>
-                <input class="input-edit" type="text" value="Sed accumsan magna">
-              </label>
-            </div>
+            <div *ngFor="let item of theList.list; let i = index" class="field">
+              <input
+                class="is-checkradio is-info"
+                type="checkbox"
+                [checked]="item.isCheck"
+                [(ngModel)]="item.isCheck"
+                [id]="'checklist-item-' + i"
+              />
 
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox">
-              <label>
-                <input class="input-edit" type="text" value="Proin id dolor ornare">
-              </label>
-            </div>
-
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox">
-              <label>
-                <input class="input-edit" type="text" value="Aliquam commodo">
-              </label>
-            </div>
-
-            <div class="field">
-              <input class="is-checkradio is-info" type="checkbox" checked="checked">
-              <label>
-                <input class="input-edit" type="text" value="Etiam eudui interdum">
+              <label [for]="'checklist-item-' + i">
+                <input
+                  [(ngModel)]="item.text"
+                  placeholder="New item"
+                  class="input-edit"
+                  type="text"
+                />
               </label>
             </div>
           </div>
         </div>
+
         <footer class="card-footer">
-          <input class="input" type="text" placeholder="New item">
-          <button class="button">Add</button>
+          <input
+            [(ngModel)]="newItem"
+            class="input"
+            type="text"
+            placeholder="New item"
+          />
+
+          <button
+            (click)="addItem()"
+            class="button">
+            Add
+          </button>
+
+          <button
+            (click)="validateList() && saveList()"
+            class="button">
+            Save list
+          </button>
         </footer>
       </div>
     </div>
