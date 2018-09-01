@@ -7,8 +7,7 @@
     "build": "tsc",
     "dev": "NODE_ENV=development ts-node ./lib/Server.ts",
     "watch:dev": "nodemon -e ts -w ./lib -x yarn run dev",
-    "start": "node ./dist/Server.js",
-    "prod": "yarn run build && yarn start",
+    "start": "yarn run build && node ./dist/Server.js",
     "test": "echo \"Error: no test specified\""
   },
   "repository": {
