@@ -23,11 +23,10 @@
 
         <div class="card-content">
           <div class="content">
-            <p *ngIf="item.text">{{item.text}}</p>
-
             <div *ngIf="item.list.length">
               <div *ngFor="let subItem of item.list" class="field">
                 <input
+                  disabled="disabled"
                   [checked]="subItem.isCheck"
                   class="is-checkradio is-info"type="checkbox"
                 />
@@ -37,8 +36,8 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a class="card-footer-item">View more</a>
-          <a class="card-footer-item">Edit</a>
+          <a (click)="openList(item._id)" class="card-footer-item">View more</a>
+          <a (click)="openList(item._id)" class="card-footer-item">Edit</a>
         </footer>
       </div>
     </div>

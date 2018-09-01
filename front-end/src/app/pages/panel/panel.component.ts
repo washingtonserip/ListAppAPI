@@ -15,7 +15,7 @@ export class PanelComponent implements OnInit {
     {
       text: 'My lists',
       icon: faListOl,
-      onClick: () => this.router.navigate(['/panel']),
+      onClick: () => this.getLists(),
     },
     {
       text: 'New list',
@@ -45,5 +45,9 @@ export class PanelComponent implements OnInit {
         response => { this.lists = response; },
         error => { this.error = 'An error has occurred. Try again.'; }
       );
+  }
+
+  openList (listId) {
+    this.router.navigate(['/list', listId]);
   }
 }
