@@ -1,0 +1,16 @@
+$sizes: (0,10,15,20,25,30,50);
+$positions: ('top','left','bottom','right');
+
+@each $position in $positions {
+  $position-str: str-slice($position, 0, 1);
+
+  @each $size in $sizes {
+    .m-#{$position-str}-#{$size} {
+      margin-#{$position}: $size + px;
+    }
+
+    .p-#{$position-str}-#{$size} {
+      padding-#{$position}: $size + px;
+    }
+  }
+}
