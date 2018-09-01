@@ -78,8 +78,15 @@ export class AuthComponent {
   signUp (user) {
     this.userService.create(user)
       .subscribe(
-        response => { this.success = 'Account created successfully. Please login.'; },
-        error => { this.error = 'An error has occurred. Try again.'; }
+        () => { this.success = 'Account created successfully. Please login.'; },
+        response => {
+          const { error } = response;
+          if (error && error.message) {
+            this.error = error.message;
+          } else {
+            this.error = 'An error has occurred. Try again.';
+          }
+        }
       );
   }
 
@@ -90,7 +97,7 @@ export class AuthComponent {
           localStorage.setItem('token', response.token);
           this.router.navigate(['/panel']);
         },
-        error => { this.error = 'An error has occurred. Try again.'; }
+        () => { this.error = 'An error has occurred. Try again.'; }
       );
   }
 }
