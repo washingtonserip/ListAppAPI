@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { faListOl, faPen, faClock, faCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ListService } from '../../services/list/list.service';
 import { IList } from '../../interfaces/list.interface';
@@ -11,7 +11,7 @@ import { Menu } from '../../interfaces/menu.interface';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  menu: Menu[] = [
+  public menu: Menu[] = [
     {
       text: 'My lists',
       icon: faListOl,
@@ -20,35 +20,73 @@ export class ListComponent implements OnInit {
     {
       text: 'New list',
       icon: faPen,
-      onClick: () => this.router.navigate(['/new-list']),
+      onClick: () => this.goToNewList(),
       isInverted: true
     }
   ];
-  error: string[] = [];
-  theList: IList = {
-    _user: '',
-    title: '',
-    text: '',
-    list: [
-      {
-        text: '',
-        isCheck: false
-      }
-    ]
-  }
-  newItem: string;
-  success: string;
-  faPen = faPen;
-  faTrash = faTrash;
-  faClock = faClock;
-  faCheck = faCheck;
+  public error: string[] = [];
+  public theList: IList;
+  public listId;
+  public newItem: string;
+  public success: string;
+  public deleteRequest: boolean;
+  public faPen = faPen;
+  public faTrash = faTrash;
+  public faClock = faClock;
+  public faCheck = faCheck;
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private listService: ListService
   ) { }
 
-  ngOnInit() {
+  ngOnInit () {
+    this.getParams();
+    this.getList();
+  }
+
+  goToNewList () {
+    if (this.listId) {
+      this.router.navigate(['/new-list']);
+    } else {
+      this.newItem = undefined;
+      this.listId = undefined;
+      this.setListDefault();
+    }
+  }
+
+  getParams () {
+    this.listId = this.activatedRoute.snapshot.params.id;
+  }
+
+  getList () {
+    if (this.listId) {
+      this.listService.read(this.listId)
+        .subscribe(
+          response => {
+            this.theList = response;
+          },
+          error => { this.error.push('An error has occurred. Try again.'); }
+        );
+    } else {
+      this.setListDefault();
+    }
+  }
+
+  setListDefault () {
+    this.theList = {
+      _id: '',
+      _user: '',
+      title: '',
+      text: '',
+      list: [
+        {
+          text: '',
+          isCheck: false
+        }
+      ]
+    };
   }
 
   addItem () {
@@ -74,13 +112,45 @@ export class ListComponent implements OnInit {
     return !this.error.length;
   }
 
-  saveList () {
+  saveOrUpdate () {
+    if (!this.listId) {
+      this.createList();
+    } else {
+      this.saveList();
+    }
+  }
+
+  createList () {
     this.listService.create(this.theList)
       .subscribe(
         response => {
           this.success = 'List created successfully.';
           this.theList = response;
+          this.listId = response._id;
         },
+        error => { this.error.push('An error has occurred. Try again.'); }
+      );
+  }
+
+  saveList () {
+    this.listService.update(this.listId, this.theList)
+      .subscribe(
+        response => {
+          this.success = 'List edited successfully.';
+          this.theList = response;
+        },
+        error => { this.error.push('An error has occurred. Try again.'); }
+      );
+  }
+
+  toggleModalDeleteRequest () {
+    this.deleteRequest = !this.deleteRequest;
+  }
+
+  deleteList () {
+    this.listService.delete(this.listId)
+      .subscribe(
+        response => { this.router.navigate(['/panel']); },
         error => { this.error.push('An error has occurred. Try again.'); }
       );
   }

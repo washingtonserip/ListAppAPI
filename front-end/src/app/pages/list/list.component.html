@@ -59,6 +59,7 @@
 
         <footer class="card-footer">
           <input
+            (keyup.enter)="addItem()"
             [(ngModel)]="newItem"
             class="input"
             type="text"
@@ -70,14 +71,43 @@
             class="button">
             Add
           </button>
-
-          <button
-            (click)="validateList() && saveList()"
-            class="button">
-            Save list
-          </button>
         </footer>
+      </div>
+
+      <div class="has-text-centered m-t-20">
+        <button
+          (click)="validateList() && saveOrUpdate()"
+          class="button is-link is-inverted">
+          Save list
+        </button>
+
+        <button
+          *ngIf="listId"
+          (click)="toggleModalDeleteRequest()"
+          class="button is-danger is-inverted is-outlined m-l-10">
+          Delete list
+        </button>
       </div>
     </div>
   </div>
 </component-page-wrapper>
+
+<div class="modal" [ngClass]="{'is-active': deleteRequest}">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box has-text-centered">
+      <h5 class="title is-5">Are you sure you want to delete?</h5>
+      <button
+        (click)="deleteList()"
+        class="button is-danger">
+        Delete
+      </button>
+
+      <button
+        (click)="toggleModalDeleteRequest()"
+        class="button is-link is-outlined m-l-10">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

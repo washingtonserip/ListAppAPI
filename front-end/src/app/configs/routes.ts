@@ -21,7 +21,7 @@ export const appRoutes: Routes = [
     canActivate: [AuthGuardService]
   },
   {
-    path: 'list',
+    path: 'list/:id',
     component: ListComponent,
     canActivate: [AuthGuardService]
   },

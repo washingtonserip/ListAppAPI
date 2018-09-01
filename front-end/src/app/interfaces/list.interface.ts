@@ -5,6 +5,7 @@ export interface ICheckList {
 }
 
 export interface IList {
+  _id: string;
   _user: string;
   title: string;
   text: string;
