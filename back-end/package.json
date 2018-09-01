@@ -9,7 +9,7 @@
     "watch:dev": "nodemon -e ts -w ./lib -x yarn run dev",
     "start": "node ./dist/Server.js",
     "prod": "yarn run build && yarn start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\""
   },
   "repository": {
     "type": "git",
