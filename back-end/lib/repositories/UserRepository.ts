@@ -1,5 +1,6 @@
 import { BaseRepository } from './BaseRepository';
 import * as mongoose from 'mongoose';
+import { Promise } from 'es6-promise';
 import { UserSchema } from '../models/UserModel';
 import { IUserModel, IUser, IUserRepository } from '../interfaces/UserInterface';
 
@@ -7,7 +8,22 @@ export class UserRepository extends BaseRepository implements IUserRepository {
   public schema: mongoose.Model<IUserModel> = UserSchema;
 
   public create (payload: IUser) : Promise<IUserModel> {
-    return super.create(payload);
+    return new Promise((resolve, reject) => {
+      const { email } = payload;
+      super.find({ email })
+        .then((result) => {
+          if (result) {
+            reject({
+              message: 'This email is already registered. Please login.'
+            });
+          } else {
+            super.create(payload)
+              .then((result) => resolve(result))
+              .catch((err) => reject(err));
+          }
+        })
+        .catch((err) => reject(err));
+    });
   }
 
   public find (params?: object) : Promise<IUserModel[]> {
