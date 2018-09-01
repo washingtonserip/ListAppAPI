@@ -6,5 +6,6 @@ services:
   - docker
 
 before_install:
-- sudo docker build -t list-app ./back-end
+- cd ./back-end
+- sudo docker build -t list-app .
 - sudo docker run -d -p 3000:3000 list-app
