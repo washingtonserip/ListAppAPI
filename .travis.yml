@@ -1,0 +1,10 @@
+sudo: required
+
+language: node_js
+
+services:
+  - docker
+
+before_install:
+- sudo docker build -t list-app ./back-end
+- sudo docker run -d -p 3000:3000 list-app
