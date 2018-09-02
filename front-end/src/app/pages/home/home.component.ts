@@ -13,13 +13,18 @@ export class HomeComponent {
     {
       text: 'Sign in or Sign up',
       icon: faSignInAlt,
-      onClick: () => this.router.navigate(['/auth']),
+      onClick: () => this.goAuth(),
       isInverted: true
     }
   ];
   faCheck = faCheck;
+  faSignInAlt = faSignInAlt;
 
   constructor (
     private router: Router
   ) {}
+
+  goAuth () {
+    this.router.navigate(['/auth']);
+  }
 }

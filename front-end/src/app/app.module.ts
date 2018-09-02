@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Interceptor } from './configs/interceptor.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
+import { jwtTokenGetter } from './configs/token';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: () => {
-          return localStorage.getItem('token');
-        }
+        tokenGetter: jwtTokenGetter
       }
     })
   ],
