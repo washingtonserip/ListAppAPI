@@ -8,7 +8,8 @@
     "dev": "NODE_ENV=development ts-node ./lib/Server.ts",
     "watch:dev": "nodemon -e ts -w ./lib -x yarn run dev",
     "start": "yarn run build && node ./dist/Server.js",
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "deploy": "gcloud app deploy"
   },
   "repository": {
     "type": "git",
