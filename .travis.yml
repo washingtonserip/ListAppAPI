@@ -4,9 +4,11 @@ language: node_js
 
 before_install:
 - cd ./front-end
+- npm run install
 - npm run build
 - mv ./dist/front-end/* ..
 - cd ../back-end
+- npm run install
 - npm run build
 - mv ./dist/* ..
 - cd ..
