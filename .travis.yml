@@ -5,11 +5,9 @@ node_js:
   - "8.9"
 
 before_install:
+- mv ./back-end/* .
 - cd ./front-end
 - npm install
 - npm run build
-- cd ../back-end
-
-after_script:
-- cd ../front-end
-- http-server ./dist/front-end
+- mv ./dist/front-end/* ..
+- cd ..
