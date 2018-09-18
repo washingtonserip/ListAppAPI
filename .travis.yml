@@ -2,10 +2,12 @@ sudo: required
 
 language: node_js
 
-services:
-  - docker
-
 before_install:
-- cd ./back-end
-- sudo docker build -t list-app .
-- sudo docker run -d -p 3000:3000 list-app
+- cd ./front-end
+- npm run build
+- mv ./dist/front-end/* ..
+- cd ../back-end
+- npm run build
+- mv ./dist/* ..
+- cd ..
+- node Server.js
