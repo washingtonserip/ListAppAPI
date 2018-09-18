@@ -11,4 +11,5 @@ before_install:
 - cd ../back-end
 
 after_script:
-- http-server ../front-end/dist/front-end
+- cd ../front-end
+- http-server ./dist/front-end
