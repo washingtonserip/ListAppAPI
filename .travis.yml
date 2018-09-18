@@ -9,9 +9,5 @@ before_install:
 - npm install
 - npm run build
 - mv ./dist/front-end/* ..
-- cd ../back-end
-- npm install
-- npm run build
-- mv ./dist/* ..
 - cd ..
-- node Server.js
+- mv ./back-end/* ..
