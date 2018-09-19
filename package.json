@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "start": "pm2 start build-app.sh --name app && pm2 start build-api.sh --name api",
+    "start:app": "chmod +x ./build-app.sh && pm2 start build-app.sh --name app",
+    "start:api": "chmod +x ./build-api.sh && pm2 start build-api.sh --name api",
+    "start": "yarn run start:app && yarn run start:api",
     "stop": "pm2 stop app && pm2 stop api",
     "app:logs": "pm2 logs app",
     "api:logs": "pm2 logs api"

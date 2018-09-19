@@ -3,7 +3,3 @@ sudo: required
 language: node_js
 node_js:
   - "8.9"
-
-before_install:
-- chmod +x ./build-app.sh
-- chmod +x ./build-api.sh
