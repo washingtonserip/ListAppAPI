@@ -28,7 +28,7 @@
     "url": "https://github.com/washingtonbr/ListApp/issues"
   },
   "homepage": "https://github.com/washingtonbr/ListApp",
-  "devDependencies": {
+  "dependencies": {
     "pm2": "^3.1.2"
   }
 }
