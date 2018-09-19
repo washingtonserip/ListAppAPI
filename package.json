@@ -4,7 +4,11 @@
   "description": "A simple list application in Angular and Node.js.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\""
+    "test": "echo \"Error: no test specified\"",
+    "start": "pm2 start build-app.sh --name app && pm2 start build-api.sh --name api",
+    "stop": "pm2 stop app && pm2 stop api",
+    "app:logs": "pm2 logs app",
+    "api:logs": "pm2 logs api"
   },
   "repository": {
     "type": "git",
@@ -23,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/washingtonbr/ListApp/issues"
   },
-  "homepage": "https://github.com/washingtonbr/ListApp"
+  "homepage": "https://github.com/washingtonbr/ListApp",
+  "devDependencies": {
+    "pm2": "^3.1.2"
+  }
 }
