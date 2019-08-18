@@ -5,7 +5,7 @@
   "main": "./dist/Server.js",
   "scripts": {
     "build": "tsc --extendedDiagnostics",
-    "dev": "NODE_ENV=development ts-node ./lib/Server.ts",
+    "dev": "cross-env NODE_ENV=development ts-node ./lib/Server.ts",
     "watch:dev": "nodemon -e ts -w ./lib -x npm run dev",
     "start": "npm run build && node ./dist/Server.js",
     "test": "echo \"Error: no test specified\""
@@ -45,6 +45,7 @@
     "typescript": "^3.0.3"
   },
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "nodemon": "^1.18.3",
     "ts-node": "^7.0.1"
   }
