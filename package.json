@@ -2,7 +2,7 @@
   "name": "listapp",
   "version": "1.0.0",
   "description": "A simple list application in Angular and Node.js.",
-  "main": "Server.js",
+  "main": "./dist/Server.js",
   "scripts": {
     "build": "tsc",
     "dev": "NODE_ENV=development ts-node ./lib/Server.ts",
@@ -32,6 +32,7 @@
     "@types/cors": "^2.8.4",
     "@types/express": "^4.16.0",
     "@types/mongoose": "^5.2.4",
+    "@types/node": "^12.7.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
