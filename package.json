@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc --extendedDiagnostics",
     "dev": "cross-env NODE_ENV=development ts-node ./lib/Server.ts",
-    "watch:dev": "nodemon -e ts -w ./lib -x npm run dev",
+    "watch:dev": "cross-env NODE_ENV=development nodemon -e ts -w ./lib -x npm run dev",
     "start": "npm run build && node ./dist/Server.js",
     "test": "echo \"Error: no test specified\""
   },
