@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "NODE_ENV=development ts-node ./lib/Server.ts",
-    "watch:dev": "nodemon -e ts -w ./lib -x yarn run dev",
-    "start": "yarn run build && node ./dist/Server.js",
+    "watch:dev": "nodemon -e ts -w ./lib -x npm run dev",
+    "start": "npm run build && node ./dist/Server.js",
     "test": "echo \"Error: no test specified\""
   },
   "repository": {

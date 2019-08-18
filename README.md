@@ -8,16 +8,16 @@ Front-end project: https://github.com/washingtonbr/ListApp
 Create the `.env.development` and `.env.production` files similar to the `.env.example` in `environments` folder.
 
 ## Build setup
-First install [Node.js](https://nodejs.org/) and [Yarn](https://yarnpkg.com/).
+First install [Node.js](https://nodejs.org/).
 ```
 # Install
-$ yarn install
+$ npm install
 
 # Running on development
-$ yarn run dev
+$ npm run dev
 
 # Running on development with Nodemon
-$ yarn run watch:dev
+$ npm run watch:dev
 ```
 
 ## Docker container for production
