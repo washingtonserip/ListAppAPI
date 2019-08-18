@@ -1,9 +1,10 @@
 import * as express from 'express';
 import { ListRepository } from '../repositories/ListRepository';
 import { IList } from '../interfaces/ListInterface';
+import { IRequest } from '../interfaces/RequestInterface';
 
 export class ListController {
-  public create (request: express.Request, response: express.Response) {
+  public create (request: IRequest, response: express.Response) {
     const { title, text, list } = request.body;
     const { _user } = request.params;
     const payload: IList = { _user, title, text, list };
@@ -18,7 +19,7 @@ export class ListController {
       });
   }
 
-  public read (request: express.Request, response: express.Response) {
+  public read (request: IRequest, response: express.Response) {
     const _listRepository = new ListRepository();
     const { _id, _user } = request.params;
 
@@ -31,7 +32,7 @@ export class ListController {
       });
   }
 
-  public readAll (request: express.Request, response: express.Response) {
+  public readAll (request: IRequest, response: express.Response) {
     const _listRepository = new ListRepository();
     const { _user } = request.params;
 
@@ -44,7 +45,7 @@ export class ListController {
       });
   }
 
-  public update (request: express.Request, response: express.Response) {
+  public update (request: IRequest, response: express.Response) {
     const { title, text, list } = request.body;
     const { _id, _user } = request.params;
     const payload: IList = { _user, title, text, list };
@@ -59,7 +60,7 @@ export class ListController {
       });
   }
 
-  public Delete (request: express.Request, response: express.Response) {
+  public Delete (request: IRequest, response: express.Response) {
     const { _id, _user } = request.params;
     const _listRepository = new ListRepository();
 

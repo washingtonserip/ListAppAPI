@@ -4,7 +4,7 @@
   "description": "A simple list application in Angular and Node.js.",
   "main": "./dist/Server.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --extendedDiagnostics",
     "dev": "NODE_ENV=development ts-node ./lib/Server.ts",
     "watch:dev": "nodemon -e ts -w ./lib -x npm run dev",
     "start": "npm run build && node ./dist/Server.js",

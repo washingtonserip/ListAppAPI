@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { Promise } from 'es6-promise';
 
 export class BaseRepository {
   public schema: mongoose.Model<any>;

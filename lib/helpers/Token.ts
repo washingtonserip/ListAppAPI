@@ -1,9 +1,10 @@
 import * as express from 'express';
 import * as jwt from 'jsonwebtoken';
 import Config from '../Config';
+import { IRequest } from '../interfaces/RequestInterface';
 
 export class Token {
-  public verify (request: express.Request, response: express.Response, next: express.NextFunction) {
+  public verify (request: IRequest, response: express.Response, next: express.NextFunction) {
     const token = request.get('x-access-token');
 
     if (!token) {

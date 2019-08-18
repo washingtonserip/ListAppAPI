@@ -4,6 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import Config from '../Config';
 import { UserRepository } from '../repositories/UserRepository';
 import { IUser } from '../interfaces/UserInterface';
+import { IRequest } from '../interfaces/RequestInterface';
 
 export class UserController {
   public login (request: express.Request, response: express.Response) {
@@ -47,9 +48,9 @@ export class UserController {
       });
   }
 
-  public read (request: express.Request, response: express.Response) {
+  public read (request: IRequest, response: express.Response) {
     const _userRepository = new UserRepository();
-    const _user: string = request.params._user;
+    const { _user } = request.params;
 
     _userRepository.findById(_user)
       .then((result) => {

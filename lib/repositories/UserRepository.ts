@@ -1,6 +1,5 @@
 import { BaseRepository } from './BaseRepository';
 import * as mongoose from 'mongoose';
-import { Promise } from 'es6-promise';
 import { UserSchema } from '../models/UserModel';
 import { IUserModel, IUser, IUserRepository } from '../interfaces/UserInterface';
 
