@@ -2,7 +2,7 @@
 
 > API Rest for list app in NodeJS using TypeScript and MongoDB.
 
-![Travis-ci](https://travis-ci.org/washingtonbr/ListApp.svg?branch=master)
+Front-end project: https://github.com/washingtonbr/ListApp
 
 ## Environment Variables
 Create the `.env.development` and `.env.production` files similar to the `.env.example` in `environments` folder.
