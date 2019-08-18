@@ -11,7 +11,7 @@ export class UserRepository extends BaseRepository implements IUserRepository {
       const { email } = payload;
       super.find({ email })
         .then((result) => {
-          if (result) {
+          if (result && result.length) {
             reject({
               message: 'This email is already registered. Please login.'
             });
